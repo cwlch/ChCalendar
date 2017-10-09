@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../src/skin/layout.css" rel="stylesheet">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="../dist/ChCalendar.js"></script>
+    <script src="../dist/module/Double.js"></script>
+    <script src="../dist/module/Normal.js"></script>
+</head>
+<body>
+<a id="a">今日</a>
+<a id="b">昨日</a>
+<a id="c">近7日</a>
+<input id="date" type="text"/>
+<input id="date2" type="text"/>
+<script>
+    var date2 = new ChCalendar.Normal("#date2",{
+//        date :{
+//            start : "2017/09/19"
+//            ,end : "2017/09/19"
+//        },
+        intervals : {
+            show :false
+        }
+    });
+
+    var datePicker = new ChCalendar.Double("#date",{
+        date : {
+            start : "2017年10月06日"
+            ,end : "2017年11月20日"
+        },
+        calendar : {
+//            0 : {
+//                currentDate : '2017年09月01日'
+//            },
+//            1 : {
+//                currentDate : '2017年11月01日'
+//            },
+            number : 2
+        },
+        disable : ["2017/10/03"],
+        intervals : {
+            first : "2017年8月05日"
+            ,last : "2017年11月28日"
+        },
+        format : "yyyy/mm/dd",
+        supplement : false
+    });
+    $("#a").click(function () {
+        datePicker.setDates({
+            start : new Date(),
+            end : new  Date()
+        })
+    });
+    $("#b").click(function () {
+        datePicker.setDates({
+            start : "2017/09/12",
+            end : "2017/09/12"
+        })
+    });
+    $("#c").click(function () {
+        datePicker.setDates({
+            start : util.calculationTime(new Date(),-7),
+            end : new Date()
+        })
+    })
+</script>
+<button id="btn">sdfa</button>
+<button id="cc">cc</button>
+<div id="cont"></div>
+</body>
+</html>

@@ -7,11 +7,13 @@
         typeof define === 'function' && define.amd ? define(factory) :
             (global.ChCalendar.Double = factory());
 }(this, (function () {
-
     'use strict';
     var defaults = {
         },
-        RenderDom,Operation,ChCalendar = require("../base/ChCalendar");
+        RenderDom,Operation,ChCalendar = window.ChCalendar;
+    if(!ChCalendar){
+        ChCalendar = require("../ChCalendar")
+    }
     RenderDom = {
         init : function (config) {
             var header = this.createHeader(),
@@ -108,9 +110,13 @@
                         example.calendarList.forEach(function (me, x, arr) {
                             if(i!= x){
                                 if(i<x){
-                                    me.setCurrentPanels({currentDate : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.currentDate,1),"yyyy/mm/dd")});
+                                    me.setOptions({currentPanel : {
+                                        date : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.date,1),"yyyy/mm/dd")}
+                                    });
                                 }else{
-                                    me.setCurrentPanels({currentDate : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.currentDate,-1),"yyyy/mm/dd")});
+                                    me.setOptions({currentPanel : {
+                                        date : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.date,-1),"yyyy/mm/dd")
+                                    }});
                                 }
 
                             }
@@ -120,9 +126,13 @@
                         example.calendarList.forEach(function (me, x, arr) {
                             if(i!= x){
                                 if(i<x){
-                                    me.setCurrentPanels({currentDate : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.currentDate,+1),"yyyy/mm/dd")});
+                                    me.setOptions({currentPanel : {
+                                        date : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.date,+1),"yyyy/mm/dd")
+                                    }});
                                 }else{
-                                    me.setCurrentPanels({currentDate : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.currentDate,-1),"yyyy/mm/dd")});
+                                    me.setOptions({currentPanel : {
+                                        date : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg.date,-1),"yyyy/mm/dd")
+                                    }});
                                 }
 
                             }
@@ -132,7 +142,7 @@
                         var date =this.o.date;
                         example.calendarList.forEach(function (me, x, arr) {
                             if(i!= x){
-                                me.setDates({start : date.start,end : date.end});
+                                me.setOptions({date : {start : date.start,end : date.end}});
                             }
                         })
                     });
@@ -140,9 +150,13 @@
                         example.calendarList.forEach(function (me, x, arr) {
                             if(i!= x){
                                 if(i<x){
-                                    me.setCurrentPanels({currentDate : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg,1),"yyyy/mm/dd")});
+                                    me.setOptions({currentPanel : {
+                                        date : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg,1),"yyyy/mm/dd")
+                                    }});
                                 }else{
-                                    me.setCurrentPanels({currentDate : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg,-1),"yyyy/mm/dd")});
+                                    me.setOptions({currentPanel : {
+                                        date : ChCalendar.util.formatDate(ChCalendar.util.calculationMonth(msg,-1),"yyyy/mm/dd")
+                                    }});
                                 }
 
                             }
@@ -201,6 +215,7 @@
             }])
         }
     };
+    ChCalendar.extend("Double",Double);
     return Double;
 })));
 // module.exports = Double;

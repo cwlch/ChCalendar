@@ -1,0 +1,143 @@
+@import "base.css";
+
+.top{
+    padding: 10px 30px;
+    height: 60px;
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    background-color :#155799 ;
+    background-image: linear-gradient(90deg,#155799 20%, #257fe6 81%, #608df0);
+}
+
+h1{
+    display: block;
+    font-size: 30px;
+    float: left;
+    color: #fff;
+    margin-right: 100px;
+}
+.navigation a{
+    font-size: 14px;
+    float: left;
+    display: block;
+    color: #fff;
+    margin: 0 10px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+.navigation a:hover,.navigation a.choose{
+    background: #fff;
+    color: #476ed6;
+}
+.main{
+    padding-left:200px;
+}
+.sub_navigation{
+    width: 200px;
+    position: fixed;
+    left: 0;
+    top:60px;
+    border-right: 1px solid #e1e1e1;
+    bottom: 0;
+    overflow: auto;
+    padding-bottom: 50px;
+}
+.sub_navigation li{
+    display: none;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+}
+.sub_navigation li a{
+    color: #657180;
+    text-decoration: none;
+}
+.sub_navigation li:hover a,.sub_navigation li.hover a{
+    color: #1b84ed;
+    font-weight: bold;
+}
+.content{
+    width: 100%;
+    padding: 60px 50px;
+    font-size: 12px;
+}
+.content a{
+    color: #1b9cff;
+    text-decoration: underline;
+}
+.new2{
+    font-weight: bold;
+    padding-left: 30px;
+    margin-top: 20px;
+    display: block !important;
+}
+.new3{
+    margin-left: 50px;
+
+}
+.new4{
+    margin-left: 70px;
+}
+.new5{
+    margin-left: 90px;
+}
+.new6{
+    margin-left: 110px;
+}
+h2,h3,h4,h5{
+    padding-bottom: 10px;
+    color: #555;
+}
+h2{
+    font-size: 20px;
+    margin-top: 20px;
+    color: #333;
+    /*background: #e1e1e1;*/
+}
+h3{
+    font-size: 16px;
+    margin-top: 60px;
+    border-bottom: 1px solid #e1e1e1;
+}
+h4{
+    font-size: 14px;
+    margin-top: 40px;
+
+}
+h4:before{
+    content: '#';
+    color: #1b9cff;
+    margin-right: 10px;
+}
+pre{
+    width: 100%;
+    overflow: auto;
+    padding: 10px;
+    background: #f8f8f8;
+}
+blockquote {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 0 0 0 1.2em;
+    border-left: 4px solid #dddddd;
+
+    min-height: 20px;
+}
+blockquote span{
+    color: #888888;
+}
+.md_line{
+    line-height: 24px;
+}
+ul li{
+    list-style: none;
+    padding-left: 20px;
+    line-height: 32px;
+}
+strong{
+    color: #f00;
+}

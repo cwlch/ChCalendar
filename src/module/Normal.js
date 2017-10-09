@@ -3,7 +3,7 @@
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-        typeof define === 'function' && define.amd ? define(factory) :
+        typeof define === 'function' && define.amd ? define() :
             (global.ChCalendar.Normal = factory());
 }(this, (function () {
     'use strict';
@@ -16,7 +16,10 @@
                 show :false
             }
         },
-        RenderDom,Operation,ChCalendar = require("../base/ChCalendar");
+        RenderDom,Operation,ChCalendar = window.ChCalendar;
+    if(!ChCalendar){
+        ChCalendar = require("../ChCalendar")
+    }
     RenderDom = {
 
     };
@@ -95,6 +98,7 @@
     };
     Normal.prototype = {
     };
+    ChCalendar.extend("Normal",Normal);
     return Normal;
 
 })));

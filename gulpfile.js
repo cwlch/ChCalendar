@@ -3,7 +3,6 @@
  */
 var gulp = require('gulp'),
 	webpack = require("webpack"),
-	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	gutil = require('gulp-util'),
 	path = require("path"),
 	minifyjs = require( 'gulp-uglify' ),	//css压缩
@@ -12,29 +11,16 @@ var gulp = require('gulp'),
 	clean = require("gulp-clean"),
 	rename = require( 'gulp-rename' );		//重命名
 
-gulp.task("module",function (cb) {
-	var module = {
-		entry : {
-			"module/Double" : "./src/module/Double.js",
-			"module/Normal" : "./src/module/Normal.js",
-		},
-		output: {
-			path: __dirname +"/dist",
-			filename: "[name].js"
-		}
-	}
-	webpack(module, function(err, stats) {
-		console.log(stats.errors, stats.warnings);
-		if (err) throw new gutil.PluginError('webpack', err);
-		gutil.log("[webpack]", stats.toString({
-			colors: true
-		}));
-		cb();
-	});
-})
+gulp.task("module",function () {
+	gulp.src('./dist/*/*').pipe(clean());
+	gulp.src( "./src/module/*.js" )
+		// .pipe(minifyjs())
+		.pipe(gulp.dest("./dist/module"));
+});
 // 运行任务
-gulp.task('default', function(cb) {
-	var entry = "ChCalendar" + packageJson.version,
+gulp.task('default',["module"], function(cb) {
+
+	var entry = packageJson.name + '-all',
 		con = {
 			entry : {},
 			output: {
@@ -43,10 +29,28 @@ gulp.task('default', function(cb) {
 				library: "ChCalendar",
 				libraryTarget: 'umd',
 				umdNamedDefine: true
-			}
+			},
+			// plugins : [new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})]
 		};
-	con.entry[entry] = "./src/index.js";
-	webpack(con, function(err, stats) {
+
+	con.entry[entry] = "./src/all.js";
+
+	var entry_base = packageJson.name ,
+		con_base = {
+			entry : {},
+			output: {
+				path: __dirname +"/dist",
+				filename: "[name].js",
+				library: "ChCalendar",
+				libraryTarget: 'umd',
+				umdNamedDefine: true
+			},
+			// plugins : [new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})]
+		};
+	con_base.entry[entry_base] = "./src/ChCalendar.js";
+
+
+	webpack([con,con_base], function(err, stats) {
 		console.log(stats.errors, stats.warnings);
 		if (err) throw new gutil.PluginError('webpack', err);
 		gutil.log("[webpack]", stats.toString({
