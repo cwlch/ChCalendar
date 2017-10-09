@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChCalendar</title>
+    <link href="./css/pages.css" rel="stylesheet">
+    <script src="./js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+<div class="top">
+    <h1>ChCalendar</h1>
+    <div class="navigation">
+        <a href="../index.html">首页</a>
+        <a href="javascript:;" class="choose">API</a>
+        <a href="./guide.html">教程</a>
+        <a href="./demo.html">demo</a>
+    </div>
+</div>
+<div class="main clear_fixed">
+    <ul class="sub_navigation"></ul>
+    <div class="content">
+        <h2 id="toc_0">ChCalendar基类</h2> <h3 id="toc_1">配置项</h3> <h4 id="toc_2">date</h4> <blockquote> <p class="md_block"> <span class="md_line">当前默认选中日期设置；</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">类型：Object<br /></span> <span class="md_line">属性：</span> </p> <ul> <li>  <strong>start</strong>   类型：Date；默认值：当前时间；开始日期</li> <li>  <strong>end</strong>     类型：Date；默认值：当前时间；结束日期</li> </ul> <p class="md_block"> <span class="md_line">如是单选日历则只需要设置start值即可；</span> </p> <h4 id="toc_3">currentDate</h4> <blockquote> <p class="md_block"> <span class="md_line">当前日历面板显示哪个日期的日期表格</span> </p> </blockquote> <p class="md_block"> <span class="md_line">类型：Date <br /></span> <span class="md_line">默认值：当前起始日期<br /></span> <span class="md_line">可传任何有效的时间格式，如（new Date() || &quot;2017/01/01&quot; || 毫秒数）；</span> </p> <h4 id="toc_4">intervals</h4> <blockquote> <p class="md_block"> <span class="md_line">时段选择相关配置项；</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">类型：Object<br /></span> <span class="md_line">属性：</span> </p> <ul> <li> <strong>show</strong>    类型：Boolean；默认：true；是否开启时段选择功能；</li> <li>  <strong>max</strong>     类型：Number；默认：30；最多能选多少天；</li> <li>  <strong>min</strong>     类型：Number；默认：1；最少需要选多少天，值为1-n；</li> <li>  <strong>first</strong>   类型：Date； 默认：空；起始可用时间，在这时间之前的日期将为禁用状态。可传任何有效的时间格式；</li> <li> <strong>last</strong>    类型：Date； 默认：空；可用时间结束，在这时间之后的日期将为禁用状态。可传任何有效的时间格式；</li> </ul> <h4 id="toc_5">disable</h4> <blockquote> <p class="md_block"> <span class="md_line">指定需要禁用的日期，经常用在如某日预约已满，需要禁用这日预约的时候。</span> </p> </blockquote> <p class="md_block"> <span class="md_line">类型：Array<br /></span> <span class="md_line">默认值：无<br /></span> <span class="md_line">示例：[&quot;2015/05/02&quot;,&quot;2015/10/01&quot;,&quot;2015/10/02&quot;]</span> </p> <h4 id="toc_6">format</h4> <p class="md_block"> <span class="md_line">类型：String<br /></span> <span class="md_line">默认值：yyyy/mm/dd<br /></span> <span class="md_line">时间相应字符：y（年） m（月） d（日）h（时） i（分） s（秒）</span> </p> <h4 id="toc_7">type</h4> <blockquote> <p class="md_block"> <span class="md_line">日历类型，支持日历和月历</span> </p> </blockquote> <p class="md_block"> <span class="md_line">类型：String<br /></span> <span class="md_line">默认值：day<br /></span> <span class="md_line">支持类型：day || month </span> </p> <h4 id="toc_8">disableSelect</h4> <blockquote> <p class="md_block"> <span class="md_line">日期是否可以点选开关，如只是做日期展示，可把此开关关闭；</span> </p> </blockquote> <p class="md_block"> <span class="md_line">类型 ： Boolean<br /></span> <span class="md_line">默认值：true</span> </p> <h4 id="toc_9">supplement</h4> <blockquote> <p class="md_block"> <span class="md_line">日历上下月日期补齐。是否在当前月日历表格的空白格子里，补齐邻月日期；</span> </p> </blockquote> <p class="md_block"> <span class="md_line">类型：Boolean<br /></span> <span class="md_line">默认：true</span> </p> <h4 id="toc_10">preNextButton</h4> <blockquote> <p class="md_block"> <span class="md_line">上下（月||年）按钮开关；</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">类型：Object<br /></span> <span class="md_line">属性：</span> </p> <ul> <li>  <strong>pre</strong>     类型：Boolean；默认：true；上按钮；</li> <li>  <strong>next</strong>    类型：Boolean；默认：true；下按钮；</li> </ul> <h4 id="toc_11">classPrefix</h4> <blockquote> <p class="md_block"> <span class="md_line">class样式前缀;</span> </p> </blockquote> <p class="md_block"> <span class="md_line">类型：String<br /></span> <span class="md_line">默认：Ch</span> </p> <h4 id="toc_12">language</h4> <p class="md_block"> <span class="md_line">类型：String<br /></span> <span class="md_line">默认值：zh_CN<br /></span> <span class="md_line">支持类型：zh_CN || en_US<br /></span> <span class="md_line">日历显示语言</span> </p> <h3 id="toc_13">实例方法</h3> <h4 id="toc_14">setOptions</h4> <blockquote> <p class="md_block"> <span class="md_line">当前实例方法，可以在任何时候调用此方法重置当前实例所有配置项中的属性。<strong>除改变显示面版类型，需要改变面板显示类型请使用setCurrentPanels方法</strong></span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：（options,callback）</span> </p> <ul> <li><strong>options[Object]</strong>格式参照 <a class="md_compiled" href="#wow1">配置项</a> </li> <li><strong>callback[function(opt)]</strong> 设置完成的回调方法。回传参数opt[Object]属性只有msg，值包括 success（成功）disable（设置的时间有禁用的时间）error（其他错误）</li> </ul> <p class="md_block"> <span class="md_line">用法：</span> </p> <pre><code>&lt;div id='my_date'&gt;&lt;/div&gt;
+&lt;div id='set_date'&gt;设置选中时间为：2017/01/01-2017/01/10&lt;/div&gt;
+var myDate = new ChCalendar('#my_date',{}); //创建日历
+$('#set_date').click(function(){
+    myDate.setDates({date : {
+        start : '2017/01/01',
+        end : '2017/01/10'
+        }},function(opt){
+            console.log(opt.msg) //回传信息  success成功、disable设置的时间包含禁用的时间、error其他错误
+            })
+})</code></pre> <!--block_code_end--> <h4 id="toc_15">setDates</h4> <blockquote> <p class="md_block"> <span class="md_line">手动重置当前日历选中日期。setDates为当前实例方法，如需要在其他地方联动当前日历时间，可调用此方法。</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：（options,callback）</span> </p> <ul> <li><strong>options[{date}]</strong>格式参照 <a class="md_compiled" href="#wow2">date</a> </li> <li><strong>callback[function(opt)]</strong> 设置完成的回调方法。回传参数opt[Object]属性只有msg，值包括 success（成功）disable（设置的时间有禁用的时间）error（其他错误）</li> </ul> <p class="md_block"> <span class="md_line">用法：</span> </p> <pre><code>&lt;div id='my_date'&gt;&lt;/div&gt;
+&lt;div id='set_date'&gt;设置选中时间为：2017/01/01-2017/01/10&lt;/div&gt;
+ var myDate = new ChCalendar('#my_date',{}); //创建日历
+ $('#set_date').click(function(){
+     myDate.setDates({
+         start : '2017/01/01',
+         end : '2017/01/10'
+         },function(opt){
+             console.log(opt.msg) //回传信息  success成功、disable设置的时间包含禁用的时间、error其他错误
+             })
+})</code></pre> <!--block_code_end--> <h4 id="toc_16">setCurrentPanels</h4> <blockquote> <p class="md_block"> <span class="md_line">设置当前显示面板信息，setCurrentPanels为当前实例方法，如需要在其他地方联动当前日历面板显示，可调用此方法。</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：（options）</span> </p> <ul> <li><strong>options[{currentDate,type}]</strong> 请参照<a class="md_compiled" href="#wow3">renderType</a> <a class="md_compiled" href="#wow7">type</a></li> </ul> <p class="md_block"> <span class="md_line">用法：</span> </p> <pre><code>&lt;div id='my_date'&gt;&lt;/div&gt;
+&lt;div id='set_day'&gt;显示2017年1月日期&lt;/div&gt;
+&lt;div id='set_month'&gt;显示2017年月历&lt;/div&gt;
+ var myDate = new ChCalendar('#my_date',{}); //创建日历
+ $('#set_day').click(function(){
+     myDate.setCurrentPanels({//调用setCurrentPanels方法显示到2017年01月
+         currentDate : '2017/01/01',
+         type : 'day'
+         })
+})
+ $('#set_month').click(function(){
+     myDate.setCurrentPanels({//调用setCurrentPanels方法显示2017年月历
+         currentDate : '2017',
+         type : 'month'
+         })
+})</code></pre> <!--block_code_end--> <h3 id="toc_17">实例事件</h3> <blockquote> <p class="md_block"> <span class="md_line">所有事件都通过jquery的on方法监听</span> </p> <h4 id="toc_18">changeDay</h4> <p class="md_block"> <span class="md_line">面板显示日历，选择日期后的事件</span> </p> </blockquote> <p class="md_block"> <span class="md_line">参数：String [date]  当前点击的日期<br /></span> <span class="md_line">用法：</span> </p> <pre><code>var myDate = new ChCalendar('target',{});
+$(myDate).on("changeDay",function(e,data){
+    console.log(data) // 2017/01/01
+})</code></pre> <!--block_code_end--> <h4 id="toc_19">changeMonth</h4> <blockquote> <p class="md_block"> <span class="md_line">面板显示月历，选择某月的事件</span> </p> </blockquote> <p class="md_block"> <span class="md_line">参数：String [date]  当前点击的日期<br /></span> <span class="md_line">用法：</span> </p> <pre><code>var myDate = new ChCalendar('target',{});
+$(myDate).on("changeMonth",function(e,data){
+    console.log(data) // 2017/01
+})</code></pre> <!--block_code_end--> <h4 id="toc_20">changeYear</h4> <blockquote> <p class="md_block"> <span class="md_line">面板显示年历，选择某年后的事件</span> </p> </blockquote> <p class="md_block"> <span class="md_line">参数：String [date] 当前点击的日期<br /></span> <span class="md_line">用法：</span> </p> <pre><code>var myDate = new ChCalendar('target',{});
+$(myDate).on("changeYear",function(e,data){
+    console.log(data) // 2017
+})</code></pre> <!--block_code_end--> <h4 id="toc_21">pre</h4> <blockquote> <p class="md_block"> <span class="md_line">点击上（月｜年）按钮后的事件</span> </p> </blockquote> <p class="md_block"> <span class="md_line">参数：Object [{type,currentDate}] type：当前显示面板显示类型；currentDate：当前面板显示的日期<br /></span> <span class="md_line">用法：</span> </p> <pre><code>var myDate = new ChCalendar('target',{});
+$(myDate).on("pre",function(e,data){
+    console.log(data.type,data.currentDate) //   day , 2017/01/01
+})</code></pre> <!--block_code_end--> <h4 id="toc_22">next</h4> <blockquote> <p class="md_block"> <span class="md_line">点击下（月｜年）按钮后的事件</span> </p> </blockquote> <p class="md_block"> <span class="md_line">参数：Object [{type,currentDate}] type：当前显示面板显示类型；currentDate：当前面板显示的日期<br /></span> <span class="md_line">用法：</span> </p> <pre><code>var myDate = new ChCalendar('target',{});
+$(myDate).on("next",function(e,data){
+    console.log(data.type,data.currentDate) //   day , 2017/01/01
+})</code></pre> <!--block_code_end--> <h2 id="toc_23">util方法库</h2> <blockquote> <p class="md_block"> <span class="md_line">util类是ChCalendar构造函数的静态方法类，使用：ChCalendar.util.方法名</span> </p> </blockquote> <h3 id="toc_24">formatDate</h3> <blockquote> <p class="md_block"> <span class="md_line">时间格式化</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>date</strong></li> <li><strong>format</strong> y年m月d日 h时i分s秒</li> </ul> <p class="md_block"> <span class="md_line">return：String<br /></span> <span class="md_line">用法：</span> </p> <pre><code>ChCalendar.util.formatDate(new Date(),"yyyy-mm-dd hh:ii:ss") //2017-01/01 00:00:00</code></pre> <!--block_code_end--> <h3 id="toc_25">leapPingnian</h3> <blockquote> <p class="md_block"> <span class="md_line">判断平年闰年 </span> </p> </blockquote> <p class="md_block"> <span class="md_line">参数：year  当前年<br /></span> <span class="md_line">return：Boolean ［true 闰年 ／false 平年］</span> </p> <h3 id="toc_26">monthHasDay</h3> <blockquote> <p class="md_block"> <span class="md_line">计算本月有多少天</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>year</strong> 年</li> <li><strong>month</strong> 月</li> </ul> <p class="md_block"> <span class="md_line">return：Number  </span> </p> <h3 id="toc_27">isWeeks</h3> <blockquote> <p class="md_block"> <span class="md_line">计算日期是周几</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>date</strong> 日期，默认为今日</li> </ul> <p class="md_block"> <span class="md_line">return：Number （1-7）</span> </p> <h3 id="toc_28">addZero</h3> <blockquote> <p class="md_block"> <span class="md_line">个位数补0</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li> <strong>number</strong> 数字（1-9）</li> </ul> <p class="md_block"> <span class="md_line">return：String（01-09）</span> </p> <h3 id="toc_29">calculationTime</h3> <blockquote> <p class="md_block"> <span class="md_line">计算日期加减日</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li> <strong>date</strong> 被计算日期</li> <li><strong>number</strong> 需要加减多少日 +1 -1（正负区分加，减）</li> </ul> <p class="md_block"> <span class="md_line">return : Date</span> </p> <h3 id="toc_30">calculationMonth</h3> <blockquote> <p class="md_block"> <span class="md_line">计算加减n月</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数</span> </p> <ul> <li> <strong>date</strong> 被计算日期</li> <li><strong>number</strong> 需要加减多少月 +1 -1（正负区分加，减）</li> </ul> <p class="md_block"> <span class="md_line">return : Date</span> </p> <h3 id="toc_31">testDate</h3> <blockquote> <p class="md_block"> <span class="md_line">检测B时间数组是否包含A时间</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>date</strong> A时间</li> <li><strong>array</strong> B时间数组</li> </ul> <p class="md_block"> <span class="md_line">return：Boolean </span> </p> <h3 id="toc_32">testMacthMax</h3> <blockquote> <p class="md_block"> <span class="md_line">判断A时间是否大于B时间</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>dateA</strong> </li> <li><strong>dateB</strong></li> </ul> <p class="md_block"> <span class="md_line">return：Boolean</span> </p> <h3 id="toc_33">testMacthMin</h3> <blockquote> <p class="md_block"> <span class="md_line">判断A时间是否小于B时间</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>dateA</strong></li> <li><strong>dateB</strong></li> </ul> <p class="md_block"> <span class="md_line">return：Boolean</span> </p> <h3 id="toc_34">getDateInterval</h3> <blockquote> <p class="md_block"> <span class="md_line">获取A时间和B时间中间的日期List</span> </p> </blockquote> <p class="md_block md_has_block_below md_has_block_below_ul"> <span class="md_line">参数：</span> </p> <ul> <li><strong>dateA</strong></li> <li><strong>dateB</strong></li> </ul> <p class="md_block"> <span class="md_line">return：Array</span> </p> <h2 id="toc_35">Double双日历</h2> <h2 id="toc_36">Normal常用单日历</h2>
+    </div>
+</div>
+<script src="./js/page.js"></script>
+</body>
+</html>

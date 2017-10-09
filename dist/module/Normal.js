@@ -1,1 +1,105 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.ChCalendar.Normal=e()}(this,function(){"use strict";var t,e={date:{start:new Date,end:new Date},intervals:{show:!1}},n=require("../ChCalendar");t={init:function(t){var e=$.extend(!0,{},t);e.$target.parent();this.setInputVal(e);var n=$("<div class='ChDatePicker'></div>"),a=this;e.$target.after(n),e.$target.remove(),n.append(e.$target),t.$html=e.$html=n,e.$target.on("focus",function(){e.calendar||(a.reloadCalendar(e),a.eventBind(e,t))}),a.watchEvent(e,t),n.on("click",function(t){t.stopPropagation(),t.preventDefault()})},setInputVal:function(t){t.$target.val(n.util.formatDate(t.o.date.start,"yyyy/mm/dd"))},reloadCalendar:function(t,e){var a=$("<div class='normal'></div>"),o=this;t.$html.append(a),t.calendar=new n(a,$.extend(!0,{},t.o)),t.$html.on("click",function(t){t.stopPropagation(),t.preventDefault()}),$(document).on("click.Double",function(){t.calendar&&o.close(t),$(document).off("click.Double")})},eventBind:function(t,e){var n=this;$(t.calendar).on("changeDay",function(a,o){var i=this.o.date;this.setDates({start:i.start,end:i.end}),t.o.date=i,n.setInputVal(t),n.close(t),$(e).trigger("confirm")})},watchEvent:function(t,e){var n=this;$(e).on("setDate",function(e,a){t.o.date=a.date?a.date:t.o.date,n.setInputVal(t)})},close:function(t){t.$html.find(".normal").remove(),t.calendar.dispose(),t.calendar=null}};var a=function(n,a){this.$target=$(n),this.o=$.extend(!0,{},e,a),t.init(this)};return a.prototype={},a});
+/**
+ * Created by Ch on 17/9/12.
+ */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+        typeof define === 'function' && define.amd ? define() :
+            (global.ChCalendar.Normal = factory());
+}(this, (function () {
+    'use strict';
+    var defaults = {
+            date : {
+                start : new Date(),
+                end : new Date(),
+            },
+            intervals : {
+                show :false
+            }
+        },
+        RenderDom,Operation,ChCalendar = window.ChCalendar;
+    if(!ChCalendar){
+        ChCalendar = require("../ChCalendar")
+    }
+    RenderDom = {
+
+    };
+    Operation = {
+        init: function (myThis) {
+            var example = $.extend(true,{},myThis),
+                parentDom = example.$target.parent();
+
+            this.setInputVal(example);
+            var $box = $("<div class='ChDatePicker'></div>"),
+                _this = this;
+            example.$target.after($box);
+            example.$target.remove();
+            $box.append(example.$target);
+            myThis.$html = example.$html = $box;
+            example.$target.on("focus",function () {
+                if(!example.calendar){
+                    _this.reloadCalendar(example);//渲染日历
+                    _this.eventBind(example,myThis);
+                }
+            });
+            _this.watchEvent(example,myThis);
+            $box.on("click",function(e){
+                e.stopPropagation();//阻止mousedown 事件冒泡（注意只阻止了mousedown事件）
+                e.preventDefault();
+            });
+        },
+        setInputVal: function(example){
+            example.$target.val( ChCalendar.util.formatDate(example.o.date.start,"yyyy/mm/dd"));
+        },
+        reloadCalendar : function (example,myThis) {
+            var target = $("<div class='normal'></div>"),
+                _this = this;
+            example.$html.append(target);
+            example.calendar = new ChCalendar(target,$.extend(true,{},example.o));
+            example.$html.on("click",function(e){
+                e.stopPropagation();//阻止mousedown 事件冒泡（注意只阻止了mousedown事件）
+                e.preventDefault();
+            });
+
+            $(document).on("click.Double", function(){
+                if(example.calendar){
+                    _this.close(example);
+                }
+                $(document).off("click.Double")
+            });
+        },
+        eventBind : function(example,myThis){
+            var _this = this;
+            $(example.calendar).on("changeDay",function (e,msg) {
+                var date = this.o.date;
+                this.setDates({start : date.start,end : date.end});
+                example.o.date = date;
+                _this.setInputVal(example);
+                _this.close(example);
+                $(myThis).trigger("confirm");
+            });
+        },
+        watchEvent : function (example,myThis) {
+            var _this = this;
+            $(myThis).on("setDate",function (e,data) {
+                example.o.date = data.date ? data.date : example.o.date;
+                _this.setInputVal(example);
+            });
+        },
+        close : function (example) {
+            example.$html.find(".normal").remove();
+            example.calendar.dispose();
+            example.calendar = null;
+        }
+    };
+    var Normal = function (target,options) {
+        this.$target =  $(target);
+        this.o = $.extend(true,{},defaults,options)
+        Operation.init(this);
+    };
+    Normal.prototype = {
+    };
+    ChCalendar.extend("Normal",Normal);
+    return Normal;
+
+})));
+// module.exports = Normal;
